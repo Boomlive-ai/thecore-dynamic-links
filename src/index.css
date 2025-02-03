@@ -1,0 +1,331 @@
+/* Global Styles */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7fb;
+  color: #333;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, p {
+  margin: 0;
+}
+
+/* Header Styles */
+header {
+  background-color: #064e6b; /* Soft green */
+  color: white;
+  text-align: center;
+  padding: 50px 20px; /* Adjusted for smaller screen */
+  font-size: 2.5rem; /* Default font size */
+  border-bottom: 1px solid #e0e0e0;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin: 0; /* Ensure no margin around the heading */
+}
+
+header p {
+  font-size: 1.4rem;
+  opacity: 0.8;
+  margin: 10px 0 0; /* Space between heading and paragraph */
+}
+
+/* Form Styles */
+.link-form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.link-form:hover {
+  transform: scale(1.02);
+}
+
+/* Input Fields */
+.link-form input {
+  width: 100%;
+  padding: 15px;
+  margin: 15px 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.link-form input:focus {
+  outline: none;
+  border-color: #064e6b;
+}
+
+/* Submit Button */
+.link-form button {
+  width: 100%;
+  padding: 15px;
+  background-color: #064e6b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.link-form button:hover {
+  background-color: #009b7b;
+}
+
+/* Error Message */
+.error-message {
+  color: #e74c3c;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Link Result Styles */
+.link-result {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+.link-result h2 {
+  font-size: 2rem;
+  color: #064e6b;
+  margin-bottom: 20px;
+}
+
+.link-result a {
+  font-size: 1.3rem;
+  color: #064e6b;
+  text-decoration: none;
+  word-wrap: break-word;
+  display: inline-block;
+  padding: 12px;
+  border: 2px solid #064e6b;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 10px;
+}
+
+.link-result a:hover {
+  background-color: #064e6b;
+  color: white;
+  border-color: #064e6b;
+  transform: scale(1.05);
+}
+
+.copy-button {
+  background-color: #064e6b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+  background-color: #009b7b;
+}
+
+.copy-button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.copy-button {
+  font-size: 1rem;
+}
+
+.copy-button:focus {
+  outline: none;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablet (max-width 768px) */
+@media (max-width: 768px) {
+  header {
+    font-size: 2rem;
+    padding: 40px 15px;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  header p {
+    font-size: 1.3rem;
+  }
+
+  .link-form {
+    width: 85%;
+    padding: 35px;
+  }
+
+  .link-form input,
+  .link-form button {
+    font-size: 1.2rem;
+    padding: 14px;
+  }
+
+  .link-result {
+    font-size: 1.2rem;
+  }
+}
+
+/* Mobile (max-width 480px) */
+@media (max-width: 480px) {
+  header {
+    font-size: 1.5rem;
+    padding: 30px 10px; /* Adjusted padding for mobile */
+  }
+
+  header h1 {
+    font-size: 2rem; /* Smaller heading size */
+  }
+
+  header p {
+    font-size: 1.2rem; /* Smaller paragraph font */
+    margin: 5px 0 0; /* Reduced margin */
+  }
+
+  .link-form {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .link-form input,
+  .link-form button {
+    font-size: 1.1rem;
+    padding: 12px;
+  }
+
+  .link-result {
+    font-size: 1.1rem;
+    padding: 25px;
+  }
+
+  .link-result a {
+    font-size: 1.1rem;
+    padding: 10px;
+  }
+}
+
+/* Large Desktop (min-width 1200px) */
+@media (min-width: 1200px) {
+  header {
+    font-size: 2.2rem;
+  }
+
+  header h1 {
+    font-size: 3rem;
+  }
+
+  .link-form {
+    width: 600px;
+    padding: 40px;
+  }
+
+  .link-form input,
+  .link-form button {
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+
+  .link-result {
+    font-size: 1.2rem;
+  }
+}
+
+
+/* Back Button Styles */
+.back-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #c0392b;
+}
+
+.back-button:focus {
+  outline: none;
+}
+
+
+/* Styling for labels and inputs */
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #064e6b;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #064e6b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #064e6b;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}

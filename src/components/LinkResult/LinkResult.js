@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { FaWhatsapp, FaCopy, FaArrowLeft } from "react-icons/fa";
 
 const LinkResult = () => {
   const { state } = useLocation();
@@ -9,39 +10,59 @@ const LinkResult = () => {
 
   const handleCopy = () => {
     if (link) {
-      navigator.clipboard.writeText(link).then(() => {
-        setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
-      }).catch(err => {
-        console.error('Failed to copy text: ', err);
-      });
+      navigator.clipboard
+        .writeText(link)
+        .then(() => {
+          setIsCopied(true);
+          setTimeout(() => setIsCopied(false), 2000);
+        })
+        .catch((err) => {
+          console.error("Failed to copy text: ", err);
+        });
     }
   };
 
   const handleBack = () => {
-    // Confirmation popup
-    const userConfirmed = window.confirm("Are you sure you want to go back to the input screen?");
+    const userConfirmed = window.confirm(
+      "Are you sure you want to go back to the input screen?"
+    );
     if (userConfirmed) {
-      navigate(-1); // Navigate back to the previous page
+      navigate(-1);
+    }
+  };
+
+  const handleShareWhatsApp = () => {
+    if (link) {
+      const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
+        "Check out this link: " + link
+      )}`;
+      window.open(whatsappUrl, "_blank");
     }
   };
 
   return (
     <div className="link-result">
-      <h2>Your dynamic link:</h2>
+      <h2>Your Dynamic Link:</h2>
       {link ? (
         <>
-          <a href={link} target="_blank" rel="noopener noreferrer">
+          <a href={link} target="_blank" rel="noopener noreferrer" className="generated-link">
             {link}
           </a>
-          <button className="copy-button" onClick={handleCopy}>
-            {isCopied ? 'Copied!' : 'Copy Link'}
+          <div className="button-group">
+            <button className="copy-button" onClick={handleCopy}>
+              <FaCopy /> {isCopied ? "Copied!" : "Copy Link"}
+            </button>
+            <button className="back-button" onClick={handleBack}>
+              <FaArrowLeft /> Back
+            </button>
+          </div>
+          <button className="whatsapp-button" onClick={handleShareWhatsApp}>
+            <FaWhatsapp /> Share on WhatsApp
           </button>
         </>
       ) : (
         <p>Link generation failed. Try again later.</p>
       )}
-      <button className="back-button" onClick={handleBack}>Back</button>
     </div>
   );
 };

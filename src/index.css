@@ -1,4 +1,4 @@
-/* Global Styles */
+/* Reset and Global Styles */
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
@@ -17,25 +17,33 @@ h1, h2, p {
   margin: 0;
 }
 
+/* Color Variables */
+:root {
+  --primary-color: #064e6b;
+  --secondary-color: #009b7b;
+  --error-color: #e74c3c;
+  --white: #ffffff;
+  --light-gray: #f1f1f1;
+  --border-gray: #ddd;
+}
+
 /* Header Styles */
 header {
-  background-color: #064e6b; /* Soft green */
+  background-color: var(--primary-color);
   color: white;
   text-align: center;
-  padding: 50px 20px; /* Adjusted for smaller screen */
-  font-size: 2.5rem; /* Default font size */
+  padding: 50px 20px;
   border-bottom: 1px solid #e0e0e0;
 }
 
 header h1 {
   font-size: 3rem;
-  margin: 0; /* Ensure no margin around the heading */
 }
 
 header p {
   font-size: 1.4rem;
   opacity: 0.8;
-  margin: 10px 0 0; /* Space between heading and paragraph */
+  margin-top: 10px;
 }
 
 /* Form Styles */
@@ -43,7 +51,7 @@ header p {
   max-width: 600px;
   margin: 40px auto;
   padding: 40px;
-  background-color: white;
+  background-color: var(--white);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   transition: transform 0.3s ease-in-out;
@@ -53,99 +61,132 @@ header p {
   transform: scale(1.02);
 }
 
-/* Input Fields */
-.link-form input {
+.link-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input Group Styles */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Input and Button Shared Styles */
+.link-form input,
+.input-group input,
+button {
   width: 100%;
   padding: 15px;
-  margin: 15px 0;
-  border: 1px solid #ddd;
   border-radius: 10px;
   font-size: 1.1rem;
   box-sizing: border-box;
-  transition: border-color 0.3s ease-in-out;
+  border: 1px solid var(--border-gray);
+  transition: all 0.3s ease-in-out;
 }
 
-.link-form input:focus {
+.link-form input:focus,
+.input-group input:focus {
   outline: none;
-  border-color: #064e6b;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(6, 78, 107, 0.2);
 }
 
-/* Submit Button */
-.link-form button {
-  width: 100%;
-  padding: 15px;
-  background-color: #064e6b;
-  color: white;
+/* Placeholder Styles */
+.input-group input::placeholder {
+  color: #999;
+  opacity: 0.7;
+}
+
+/* Button Styles */
+button {
+  background-color: var(--primary-color);
+  color: var(--white);
   border: none;
-  border-radius: 10px;
   cursor: pointer;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
-.link-form button:hover {
-  background-color: #009b7b;
+button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(1px);
 }
 
 /* Error Message */
 .error-message {
-  color: #e74c3c;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  font-weight: bold;
+  color: var(--error-color);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(231, 76, 60, 0.1);
+  border-radius: 8px;
 }
 
 /* Link Result Styles */
 .link-result {
+  max-width: 500px;
+  margin: 40px auto;
   text-align: center;
-  padding: 40px 20px;
-  margin-top: 20px;
-  background-color: #ffffff;
+  padding: 30px;
+  background-color: var(--white);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
 }
 
 .link-result h2 {
   font-size: 2rem;
-  color: #064e6b;
+  color: var(--primary-color);
   margin-bottom: 20px;
 }
 
-.link-result a {
+.generated-link {
   font-size: 1.3rem;
-  color: #064e6b;
-  text-decoration: none;
-  word-wrap: break-word;
+  color: var(--primary-color);
   display: inline-block;
   padding: 12px;
-  border: 2px solid #064e6b;
+  border: 2px solid var(--primary-color);
   border-radius: 10px;
-  background-color: #f1f1f1;
+  background-color: var(--light-gray);
   transition: all 0.3s ease-in-out;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
-.link-result a:hover {
-  background-color: #064e6b;
-  color: white;
-  border-color: #064e6b;
+.generated-link:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
   transform: scale(1.05);
 }
 
-.copy-button {
-  background-color: #064e6b;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin: 20px;
-  transition: background-color 0.3s ease;
+/* Button Group */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
 }
 
-.copy-button:hover {
-  background-color: #009b7b;
+.button-group button {
+  flex: 1;
+  max-width: 200px;
+  padding: 12px;
+}
+
+/* Specific Button Styles */
+.copy-button {
+  background-color: var(--primary-color);
 }
 
 .copy-button:disabled {
@@ -153,61 +194,51 @@ header p {
   cursor: not-allowed;
 }
 
-.copy-button {
-  font-size: 1rem;
+.back-button {
+  background-color: var(--error-color);
 }
 
-.copy-button:focus {
-  outline: none;
+.back-button:hover {
+  background-color: #c0392b;
 }
 
-/* Media Queries for Responsiveness */
+.whatsapp-button {
+  background-color: #25D366;
+  margin-top: 15px;
+}
 
-/* Tablet (max-width 768px) */
+.whatsapp-button:hover {
+  background-color: #1da851;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  header {
-    font-size: 2rem;
-    padding: 40px 15px;
-  }
-
-  header h1 {
-    font-size: 2.5rem;
-  }
-
-  header p {
-    font-size: 1.3rem;
-  }
-
   .link-form {
-    width: 85%;
-    padding: 35px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 25px;
   }
 
   .link-form input,
   .link-form button {
-    font-size: 1.2rem;
-    padding: 14px;
-  }
-
-  .link-result {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    padding: 12px;
   }
 }
 
-/* Mobile (max-width 480px) */
 @media (max-width: 480px) {
   header {
     font-size: 1.5rem;
-    padding: 30px 10px; /* Adjusted padding for mobile */
+    padding: 30px 10px;
   }
 
   header h1 {
-    font-size: 2rem; /* Smaller heading size */
+    font-size: 2rem;
   }
 
   header p {
-    font-size: 1.2rem; /* Smaller paragraph font */
-    margin: 5px 0 0; /* Reduced margin */
+    font-size: 1.2rem;
+    margin: 5px 0 0;
   }
 
   .link-form {
@@ -215,117 +246,30 @@ header p {
     padding: 30px;
   }
 
-  .link-form input,
-  .link-form button {
-    font-size: 1.1rem;
-    padding: 12px;
+  .input-group label {
+    font-size: 0.9rem;
   }
 
-  .link-result {
-    font-size: 1.1rem;
-    padding: 25px;
+  .error-message {
+    font-size: 0.8rem;
   }
 
-  .link-result a {
-    font-size: 1.1rem;
-    padding: 10px;
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button-group button {
+    max-width: 100%;
   }
 }
 
-/* Large Desktop (min-width 1200px) */
 @media (min-width: 1200px) {
   header {
     font-size: 2.2rem;
-  }
-
-  header h1 {
-    font-size: 3rem;
   }
 
   .link-form {
     width: 600px;
     padding: 40px;
   }
-
-  .link-form input,
-  .link-form button {
-    font-size: 1.1rem;
-    padding: 15px;
-  }
-
-  .link-result {
-    font-size: 1.2rem;
-  }
-}
-
-
-/* Back Button Styles */
-.back-button {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-  background-color: #c0392b;
-}
-
-.back-button:focus {
-  outline: none;
-}
-
-
-/* Styling for labels and inputs */
-.input-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  font-size: 1.1rem;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-input {
-  width: 100%;
-  padding: 15px;
-  border-radius: 10px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
-}
-
-input:focus {
-  border-color: #064e6b;
-}
-
-button {
-  width: 100%;
-  padding: 15px;
-  background-color: #064e6b;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #064e6b;
-}
-
-.error-message {
-  color: #e74c3c;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  font-weight: bold;
 }

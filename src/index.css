@@ -1,3 +1,13 @@
+/* Prevent horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 /* Reset and Global Styles */
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -26,24 +36,53 @@ h1, h2, p {
   --light-gray: #f1f1f1;
   --border-gray: #ddd;
 }
-
 /* Header Styles */
 header {
   background-color: var(--primary-color);
   color: white;
   text-align: center;
-  padding: 50px 20px;
+  padding: 40px 20px;
   border-bottom: 1px solid #e0e0e0;
 }
 
 header h1 {
-  font-size: 3rem;
+  font-size: 2.8rem;
+  margin: 0;
 }
 
 header p {
-  font-size: 1.4rem;
-  opacity: 0.8;
-  margin-top: 10px;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-top: 8px;
+}
+
+/* Responsive Header Adjustments */
+@media (max-width: 768px) {
+  header {
+    padding: 30px 15px;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  header p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 25px 10px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
 }
 
 /* Form Styles */
@@ -150,6 +189,13 @@ button:active {
   color: var(--primary-color);
   margin-bottom: 20px;
 }
+
+.link-form, .link-result {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
 
 .generated-link {
   font-size: 1.3rem;

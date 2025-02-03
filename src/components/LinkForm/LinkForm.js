@@ -15,6 +15,9 @@ const LinkForm = () => {
   const youtubeRegex = /^https?:\/\/(www\.youtube\.com|youtu\.be)/i;
 
   const validateUrls = () => {
+    if (!appleUrl || !spotifyUrl || !youtubeUrl) {
+      return "All three links (Apple Podcast, Spotify, YouTube) are required.";
+    }
     if (appleUrl && !applePodcastRegex.test(appleUrl)) {
       return "Please enter a valid Apple Podcasts URL.";
     }
@@ -92,7 +95,9 @@ const LinkForm = () => {
           />
         </div>
 
-        <button type="submit">Generate Link</button>
+        <button type="submit" disabled={!appleUrl || !spotifyUrl || !youtubeUrl}>
+          Generate Link
+        </button>
       </form>
     </div>
   );
